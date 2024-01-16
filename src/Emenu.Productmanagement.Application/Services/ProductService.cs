@@ -11,7 +11,6 @@ using System.Xml.Linq;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
-using Volo.Abp.ObjectMapping;
 
 namespace Emenu.Productmanagement.Services
 {
@@ -36,11 +35,13 @@ namespace Emenu.Productmanagement.Services
                 Name = input.Name,
                 Price = input.Price,
             }).Result;
+
             foreach(var image in input.Images)
             {
                 image.ProductId = product.Id;
                 imageAppService.SaveImage(image);
             }
+            //we should use objectmapper
             ProductDto p = new ProductDto()
             {
                 Id = product.Id,

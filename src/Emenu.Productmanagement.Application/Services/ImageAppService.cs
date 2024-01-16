@@ -55,7 +55,7 @@ namespace Emenu.Productmanagement.Services
                     ImageRepository.InsertAsync(new Image() {
                         Name = image.Name,
                         Path = imageDto.Path,
-                        
+                        ProductId = (Guid)image.ProductId
                     });
                     return Task.FromResult(imageDto);
                 }
